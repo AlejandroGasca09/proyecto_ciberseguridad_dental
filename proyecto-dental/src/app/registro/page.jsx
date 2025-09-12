@@ -53,9 +53,11 @@ export default function Registro(){
             </div>
             <div className="genero">
                 <label htmlFor="genero"> Genero : </label>
+
                 <input type="radio" id="masculino" name="genero" value={"Masculino"} onChange={(e) => setGenero(e.target.value)} checked={genero === "Masculino"} />
-                <label htmlFor="femenino"> Masculino :  </label>
-                <input type="radio" id="masculino" name="genero" value={"Femenino"} onChange={(e) => setGenero(e.target.value)} checked={genero === "Femenino"} />
+                <label htmlFor="masculino"> Masculino :  </label>
+
+                <input type="radio" id="femenino" name="genero" value={"Femenino"} onChange={(e) => setGenero(e.target.value)} checked={genero === "Femenino"} />
                 <label htmlFor="femenino"> Femenino </label>
             </div>
             <div className="usuario">

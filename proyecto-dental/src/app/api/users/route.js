@@ -9,6 +9,9 @@ export async function POST(req) {
         await connectionToDatabase()
         const {nombre,paterno,materno,telefono,email,genero,usuario,confirmar,password} = await req.json()
 
+        console.log("Registro recibido:", { nombre, email, usuario });
+
+
         if ( !nombre || !paterno || !materno || !telefono || !email || !genero || !usuario || !confirmar || !password){
             return NextResponse.json({message : "Por favor llena todos los campos"}, {status : 400})
         }
@@ -31,10 +34,12 @@ export async function POST(req) {
             return NextResponse.json({message : "El usuario ya esta registrado"}  , {status : 409})
         }
 
+        const users = await User.find();
+        console.log(`Usuario registrads: ${users}`)
+
         const hashedPassword = await bcrypt.hash(password,10) 
 
         const newUser = new User({nombre,paterno,materno,telefono,email,genero,usuario,password : hashedPassword,rol:'usuario'})
-
 
         await newUser.save();
         return NextResponse.json({ message: 'Usuario registrado correctamente', user: newUser }, { status: 201 });
