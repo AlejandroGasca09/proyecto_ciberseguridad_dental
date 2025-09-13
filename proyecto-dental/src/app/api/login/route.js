@@ -1,6 +1,8 @@
 import connectionToDatabase from "../../../../lib/mongoose";
 import User from "../../../../models/user";
 import bcrypt from 'bcryptjs'
+import jwt from 'jsonwebtoken';
+import { cookies } from 'next/headers';
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
@@ -12,22 +14,22 @@ export async function POST(req) {
         const user = await User.findOne({ email });
 
         if (!user) {
-            return NextResponse.json({message : "Usuario no encontrado"}, {status : 404});
+            return NextResponse.json({ message: "Usuario no encontrado" }, { status: 404 });
         }
 
         const passwordMatch = await bcrypt.compare(password, user.password);
         console.log('¿La contraseña coincide?', passwordMatch);
 
         if (!passwordMatch) {
-            return NextResponse.json({message : "Contraseña incorrecta"}, {status : 401});
+            return NextResponse.json({ message: "Contraseña incorrecta" }, { status: 401 });
         }
 
         const { password: _, ...userWithoutPassword } = user.toObject();
 
-        return NextResponse.json({message: "Inicio de sesión exitoso" , user: userWithoutPassword});
+        return NextResponse.json({ message: "Inicio de sesión exitoso", user: userWithoutPassword });
 
     } catch (error) {
         console.error("Error en login :", error);
-        return NextResponse.json({ message: "Error interno del servidor" },{ status: 500 });
+        return NextResponse.json({ message: "Error interno del servidor" }, { status: 500 });
     }
 }

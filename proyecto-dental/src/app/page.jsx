@@ -12,11 +12,7 @@ export default function Home() {
             </a>
           </div>
           <div className="flex lg:hidden">
-            <button
-              type="button"
-              className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-              aria-label="Open main menu"
-            >
+            <button type="button" className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700" aria-label="Open main menu">
               <svg
                 viewBox="0 0 24 24"
                 fill="none"
@@ -36,8 +32,8 @@ export default function Home() {
           <div className="hidden lg:flex lg:gap-x-12">
             <a href="#" className="text-sm font-semibold text-gray-900">Inicio</a>
             <Link href="/nosotros" className="text-sm font-semibold text-gray-900"> Sobre nosotros</Link>
-            <a href="#" className="text-sm font-semibold text-gray-900">Deposito Dental</a>
-            <a href="#" className="text-sm font-semibold text-gray-900">Informacion</a>
+            <Link href="/deposito" className="text-sm font-semibold text-gray-900">Deposito dental</Link>
+            <Link href="/informacion" className="text-sm font-semibold text-gray-900">Informacion</Link>
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
             <Link href="/sesion" className="text-sm font-semibold text-gray-900"> Log in <span aria-hidden="true">&rarr;</span></Link>
@@ -46,7 +42,7 @@ export default function Home() {
       </header>
 
       <div className="relative isolate px-6 pt-14 lg:px-8">
-        <div aria-hidden="true"className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
+        <div aria-hidden="true" className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
           <div
             style={{
               clipPath:
