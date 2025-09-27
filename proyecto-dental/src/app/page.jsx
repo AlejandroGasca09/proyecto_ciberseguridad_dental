@@ -30,7 +30,7 @@ export default function Home() {
             </button>
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
-            <a href="#" className="text-sm font-semibold text-gray-900">Inicio</a>
+            <Link href="/" className="text-sm font-semibold text-gray-900">Inicio</Link>
             <Link href="/nosotros" className="text-sm font-semibold text-gray-900"> Sobre nosotros</Link>
             <Link href="/deposito" className="text-sm font-semibold text-gray-900">Deposito dental</Link>
             <Link href="/informacion" className="text-sm font-semibold text-gray-900">Informacion</Link>
